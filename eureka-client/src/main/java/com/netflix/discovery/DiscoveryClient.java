@@ -937,13 +937,14 @@ public class DiscoveryClient implements EurekaClient {
             if (statusChangeListener != null && applicationInfoManager != null) {
                 applicationInfoManager.unregisterStatusChangeListener(statusChangeListener.getId());
             }
-
+            // 停止线程池
             cancelScheduledTasks();
 
             // If APPINFO was registered
             if (applicationInfoManager != null
                     && clientConfig.shouldRegisterWithEureka()
                     && clientConfig.shouldUnregisterOnShutdown()) {
+                // 设置服务状态：DOWN
                 applicationInfoManager.setInstanceStatus(InstanceStatus.DOWN);
                 unregister();
             }
@@ -952,6 +953,7 @@ public class DiscoveryClient implements EurekaClient {
                 eurekaTransport.shutdown();
             }
 
+            // 释放
             heartbeatStalenessMonitor.shutdown();
             registryStalenessMonitor.shutdown();
 

@@ -157,6 +157,7 @@ public class ApplicationsResource {
                     .header(HEADER_CONTENT_TYPE, returnMediaType)
                     .build();
         } else {
+            // 多级缓存机制
             response = Response.ok(responseCache.get(cacheKey))
                     .build();
         }

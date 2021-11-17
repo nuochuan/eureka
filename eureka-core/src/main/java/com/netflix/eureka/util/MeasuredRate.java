@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Utility class for getting a count in last X milliseconds.
- *
+ * 如何计算每一分钟内的一个内存中的计数？计算每一分钟内的心跳次数。
  * @author Karthik Ranganathan,Greg Kim
  */
 public class MeasuredRate {
